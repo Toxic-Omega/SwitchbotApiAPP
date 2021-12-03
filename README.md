@@ -11,4 +11,4 @@
 7. On the third line put your color bulb name
 8. Open the switchbotapiapp.pyw and hope that everything works!
 ```
-To get debug data : python3 switchbotapiapp.pyw
+## To get debug data : python3 switchbotapiapp.pyw
