@@ -1,0 +1,7 @@
+
+    {
+        "command": "setBrightness",
+        "parameter": "2",
+        "commandType": "command"
+    }
+    
