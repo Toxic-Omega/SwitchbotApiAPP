@@ -6,7 +6,6 @@ import os
 with open('devices.txt') as devices:
     devices = [line.rstrip() for line in devices]
 
-
 print("---- Debug data ----")
 print("")
 print("Token : " , devices[0])
@@ -57,7 +56,7 @@ def brightness_down():
     os.popen('curl -X POST -H "Content-Type: application/json" -d @json/brightness_down.json "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(devices[1],devices[0]))
 
 def red():
-    os.popen('curl -X POST -H "Content-Type: application/json" -d @json/red.json "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(devices[1],devices[0]))
+    os.popen('curl -sS -X POST -H "Content-Type: application/json" -d @json/red.json "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(devices[1],devices[0]))
 
 def blue():
     os.popen('curl -X POST -H "Content-Type: application/json" -d @json/blue.json "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(devices[1],devices[0]))
@@ -132,6 +131,7 @@ green_img=PhotoImage(file='images/green.png')
 green_button = Button(window, highlightthickness=0, bd=0, text='', image=green_img, command=lambda: green())
 green_button.pack(ipadx=5, ipady=5, expand=True)
 green_button.place(x=175, y=225)
+
 #==================================================================================================================================
 
 img2 = PhotoImage(file="images/box2.png")
@@ -171,5 +171,6 @@ send_data1_button.pack(ipadx=5, ipady=5, expand=True)
 send_data1_button.place(x=385, y=210)
 
 #==================================================================================================================================
+
 window.mainloop()
 
