@@ -1,7 +1,7 @@
 
     {
         "command": "setColor",
-        "parameter": "0:0:160",
+        "parameter": "255:0:0",
         "commandType": "command"
     }
     
