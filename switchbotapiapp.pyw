@@ -2,12 +2,15 @@ from tkinter import colorchooser
 from tkinter import *
 from tkinter import ttk
 import subprocess
+from io import StringIO
 import pymsgbox
 import getpass
 import inspect
 import sys
 import os
 
+
+sys.stdout = buffer = StringIO()         # Capture terminal output
 user = getpass.getuser()        # get the name of the current user
 devicespath = ('C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt' .format(user))          # set path for devices.txt
 
@@ -65,22 +68,22 @@ def choose_color(): # function to open windows color selector and to writes that
         "command": "setColor",
         "parameter": "%s",
         "commandType": "command"
-    ***REMOVED***
+    }
     """ % color_code)
     f.close()
     print(' Running function :',inspect.stack()[0][3])
 def apply_brightness(): # function to get the number from 0-100 from scale "brightness" and send that info to the switchbot api
-    print("Brightness : {***REMOVED***".format(brightness.get()))
+    print("Brightness : {}".format(brightness.get()))
     f = open(resource_path("json/bulb_brightness.json"), "w")
     f.write("""
     {
         "command": "setBrightness",
         "parameter": "%s",
         "commandType": "command"
-    ***REMOVED***
+    }
     """ % brightness.get())
     f.close()
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\bulb_brightness.json"),devices[2],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\bulb_brightness.json"),devices[2],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 #==================================================================================================================================
 def led_mass_hide(): # forget the place of the mentioned objects and place box2 and lift swap1
@@ -147,39 +150,69 @@ def toggle2(): # See if the value of state1 is Hidden or Showing and run functio
         bulb_mass_hide()
         state2 = "Hidden"
 #==================================================================================================================================
+def settings_mass_hide(): # forget the place of the mentioned objects and place box2 and lift swap1
+    settings_button.config(image=settings_img)
+    settings_button.image = settings_img
+    box5.place_forget()
+    devices_button.place_forget()
+    text_box.place_forget()
+    print("hidden")
+
+def settings_mass_show(): # place all of the mentioned objects and hide box2 and lift swap1
+    settings_button.config(image=settings_show_img)
+    settings_button.image = settings_show_img
+    box5.place(x=10, y=383)
+    devices_button.place(x=15, y=390)
+    settings_button.lift()
+    text_box.pack(expand=True)
+    text_box.place(x=250, y=325)    
+    print("showning")
+
+def toggle3(): # See if the value of state1 is Hidden or Showing and run functions led_mass_show and led_mass_hide
+    global state3
+    if state3 == "Hidden":
+        settings_mass_show()
+        state3 = "Showing"
+    elif state3 == "Showing":
+        settings_mass_hide()
+        state3 = "Hidden"
+#==============================================================================================================================
 # When any of the functions are called they read from the first,second and third line of the devices.txt file and read from the files in the json folder and send all of that data to the switchbot api
 def turn_on():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\on.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\on.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def turn_off():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\off.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\off.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def brightness_up():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\brightness_up.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\brightness_up.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def brightness_down():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\brightness_down.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\brightness_down.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def red():
-    subprocess.call('curl -k -sS -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\red.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -sS -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\red.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def blue():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\blue.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\blue.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def green():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\green.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\green.json"),devices[1],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def purple():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\purple.json"),devices[1],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\purple.json"),devices[1],devices[0]), shell=True)
 #==================================================================================================================================
 def turn_on2():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\on.json"),devices[2],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\on.json"),devices[2],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def turn_off2():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\off.json"),devices[2],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\off.json"),devices[2],devices[0]), shell=True)
     print(' Running function :',inspect.stack()[0][3])
 def apply_color():
-    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{***REMOVED*** "https://api.switch-bot.com/v1.0/devices/{***REMOVED***/commands"  -H "Authorization: {***REMOVED***"'.format(resource_path("json\\bulb_color.json"),devices[2],devices[0]), shell=True)
+    subprocess.call('curl -k -X POST -H "Content-Type: application/json" -d @{} "https://api.switch-bot.com/v1.0/devices/{}/commands"  -H "Authorization: {}"'.format(resource_path("json\\bulb_color.json"),devices[2],devices[0]), shell=True)
+#==================================================================================================================================
+def open_devices():
+    subprocess.call('notepad C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt'.format(user))
 #==================================================================================================================================
 # Specify title,icon,background,size of the window
 window = Tk()
@@ -192,6 +225,29 @@ window.configure(background='#192734')
 
 #==================================================================================================================================
 # This contains all of the buttons and images
+settings_show_img=PhotoImage(file=resource_path("images\\settings_show.png"))
+settings_img=PhotoImage(file=resource_path("images\\settings.png"))
+settings_button = Button(window, highlightthickness=0, bd=0, text='', image=settings_img, command=toggle3)
+settings_button.pack(ipadx=5, ipady=5, expand=True)
+settings_button.place(x=10, y=450)
+state3 = "Hidden"
+
+box5_img = PhotoImage(file=resource_path("images\\settings_box.png"))
+box5 = Canvas(window, width = 226, height = 107, highlightthickness=0, bd=0)
+box5.create_image(0, 0, anchor=NW, image=box5_img) 
+
+devices_img=PhotoImage(file=resource_path("images\\open_devices.png"))
+devices_button = Button(window, highlightthickness=0, bd=0, text='', image=devices_img, command=lambda: open_devices())
+
+text_box = Text(
+    window,
+    height=10,
+    width=55
+)
+text_box.insert('end', buffer.getvalue())
+text_box.config(state='disabled')
+
+#==================================================================================================================================
 box1_img = PhotoImage(file=resource_path("images\\box1.png"))
 box1 = Canvas(window, width = 237, height = 287, highlightthickness=0, bd=0)
 box1.create_image(0, 0, anchor=NW, image=box1_img) 

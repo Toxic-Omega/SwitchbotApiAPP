@@ -1,7 +1,7 @@
 
     {
         "command": "setBrightness",
-        "parameter": "2",
+        "parameter": "1",
         "commandType": "command"
-    ***REMOVED***
+    }
     
