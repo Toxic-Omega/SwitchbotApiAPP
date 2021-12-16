@@ -1,8 +1,8 @@
+from io import StringIO
 from tkinter import colorchooser
 from tkinter import *
 from tkinter import ttk
 import subprocess
-from io import StringIO
 import pymsgbox
 import getpass
 import inspect
