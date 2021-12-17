@@ -16,12 +16,9 @@
 |`Camera`                 | `view camera`                                                                 | `Low`       |
 ## Installation
 ```sh
-apt update && apt upgrade -y
-apt install git -y
-git clone https://github.com/Toxic-Omega/QuickTransfer
-cd QuickTransfer
-chmod +x install.sh
-./install.sh
+Download : https://github.com/Toxic-Omega/SwitchbotPcApp/archive/refs/heads/master.zip
+Unzip master.zip
+
 ```
 # Run
 ```sh
