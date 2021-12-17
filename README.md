@@ -8,14 +8,13 @@
 |`Any light`              | `on/off , brightness_up/brightness_down , change colors`                |
 |`Color Bulb`             | `on/off , brightness_scale , change colors`                             |
 ### Upcomming Features
-
-```sh
-Meter support
-Tv support
-Camera support
-Bot support
-```
-# Installation
+| Device name             | Features                                                                      | Priority  |
+|-------------------------|-------------------------------------------------------------------------------|-----------|
+|`Tv`                     | `toggle , change channels , volume up/down , up,down,left,right,ok buttons`   | Very High |
+|`Bot`                    | `on/off , brightness_scale , change colors`                                   | High      |
+|`Meter`                  | `see temperature and humidity`                                                | Low       |
+|`Camera`                 | `view camera`                                                                 | Low       |
+## Installation
 ```sh
 apt update && apt upgrade -y
 apt install git -y
