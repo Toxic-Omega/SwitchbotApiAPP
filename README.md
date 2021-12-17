@@ -24,7 +24,3 @@ Thats it all of the other packages are already installed with python
 Download the lastest version and unzip it, run SwitchbotPcApp.exe or SwitchbotPcApp.py
 ```
 **⚠ WARNING: You will need to disable your antivirus when running SwitchbotPcApp.exe because it thinks curl.exe is a virus!!!**  
-# Run
-```sh
-python3 QuickTransfer.py
-```
