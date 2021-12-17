@@ -2,6 +2,7 @@
   <img width="1030" height="181" src="https://github.com/Toxic-Omega/SwitchbotPcApp/blob/master/title.png">
 </p>
 # Features
+
 ```sh
 Control any type of light : on/off , brightness_up/brightness_down , change_colors (Only works if you make the required buttons in the mobile app)
 Color Bulb support : on/off , brightness_scale , choose_any_color
