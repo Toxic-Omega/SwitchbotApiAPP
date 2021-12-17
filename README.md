@@ -4,6 +4,11 @@
 
 # Features
 
+| Device name             | Features                                                                |
+|-------------------------|-------------------------------------------------------------------------|
+|`Any light`              | `on/off , brightness_up/brightness_down , change colors`                |
+|`Color Bulb`             | `on/off , brightness_scale , change colors`                             |
+
 ```sh
 Control any type of light : on/off , brightness_up/brightness_down , change_colors (requires custom buttons)
 Color Bulb support : on/off , brightness_scale , choose_any_color
