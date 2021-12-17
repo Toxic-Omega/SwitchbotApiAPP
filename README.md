@@ -17,13 +17,13 @@
 ## Requirements
 ```sh
 Python 3.10.0 or higher
-That's it all of the other packages are already installed with python
+Thats it all of the other packages are already installed with python
 ```
 ## Install
 ```sh
 Download the lastest version and unzip it, run SwitchbotPcApp.exe or SwitchbotPcApp.py
 ```
-> **⚠ WARNING: You will need to diable antivirus when running SwitchbotPcApp.exe because it thinks curl.exe is a virus!!!**  
+**⚠ WARNING: You will need to disable your antivirus when running SwitchbotPcApp.exe because it thinks curl.exe is a virus!!!**  
 # Run
 ```sh
 python3 QuickTransfer.py
