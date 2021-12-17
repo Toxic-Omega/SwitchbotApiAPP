@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="800" height="200" src="https://github.com/Toxic-Omega/SwitchbotPcApp/blob/master/title.png">
+  <img width="800" height="150" src="https://github.com/Toxic-Omega/SwitchbotPcApp/blob/master/title.png">
 </p>
 
 ### Features
