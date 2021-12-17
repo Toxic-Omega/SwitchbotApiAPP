@@ -14,12 +14,16 @@
 |`Bot`                    | `on/off , brightness_scale , change colors`                                   | `High`      |
 |`Meter`                  | `see temperature and humidity`                                                | `Low`       |
 |`Camera`                 | `view camera`                                                                 | `Low`       |
-## Installation
+## Requirements
 ```sh
-Download : https://github.com/Toxic-Omega/SwitchbotPcApp/archive/refs/heads/master.zip
-Unzip master.zip
-
+Python 3.10.0 or higher
+That's it all of the other packages are already installed with python
 ```
+## Install
+```sh
+Download the lastest version and unzip it, run SwitchbotPcApp.exe or SwitchbotPcApp.py
+```
+> **⚠ WARNING: You will need to diable antivirus when running SwitchbotPcApp.exe because it thinks curl.exe is a virus!!!**  
 # Run
 ```sh
 python3 QuickTransfer.py
