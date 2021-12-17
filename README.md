@@ -10,10 +10,10 @@
 ### Upcomming Features
 | Device name             | Features                                                                      | Priority  |
 |-------------------------|-------------------------------------------------------------------------------|-----------|
-|`Tv`                     | `toggle , change channels , volume up/down , up,down,left,right,ok buttons`   | Very High |
-|`Bot`                    | `on/off , brightness_scale , change colors`                                   | High      |
-|`Meter`                  | `see temperature and humidity`                                                | Low       |
-|`Camera`                 | `view camera`                                                                 | Low       |
+|`Tv`                     | `toggle , change channels , volume up/down , up,down,left,right,ok buttons`   | `Very High` |
+|`Bot`                    | `on/off , brightness_scale , change colors`                                   | `High`      |
+|`Meter`                  | `see temperature and humidity`                                                | `Low`       |
+|`Camera`                 | `view camera`                                                                 | `Low`       |
 ## Installation
 ```sh
 apt update && apt upgrade -y
