@@ -12,21 +12,6 @@ import os
 user = getpass.getuser()        # get the name of the current user
 devicespath = ('C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt' .format(user))          # set path for devices.txt
 
-def resource_path(relative_path):     # gets the path of the temp folder
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
-
-with open('C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt'.format(user)) as devices: # Read info from devices.txt
-    devices = [line.rstrip() for line in devices]
-
-def debug():        # Display Debug data, this shows if something isnt working
-    print("Token : " , devices[0])
-    print("LED Light Line : " , devices[1])
-    print("Color Bulb Line : " , devices[2])
-    print("Devices.txt File : " + resource_path("devices.txt"))
-    print("Json Folder : " + resource_path("json"))
-    print("Images Folder : " + resource_path("images"))
-
 if not os.path.exists('C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt' .format(user)):     # write instructions to devices.txt, opening notepad, and hiding the file
     w = open(devicespath, 'w')
     w.write("""
@@ -50,6 +35,21 @@ If you dont have some of the devices mentioned above , just leave the line empty
     pymsgbox.alert('Close this popup and follow instructions!', 'First time opening detected!')
     os.system("notepad C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt".format(user))
     os.system("attrib +h C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt".format(user))
+
+def resource_path(relative_path):     # gets the path of the temp folder
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+with open('C:\\Users\\{}\\AppData\\Local\\Temp\\devices.txt'.format(user)) as devices: # Read info from devices.txt
+    devices = [line.rstrip() for line in devices]
+
+def debug():        # Display Debug data, this shows if something isnt working
+    print("Token : " , devices[0])
+    print("LED Light Line : " , devices[1])
+    print("Color Bulb Line : " , devices[2])
+    print("Devices.txt File : " + resource_path("devices.txt"))
+    print("Json Folder : " + resource_path("json"))
+    print("Images Folder : " + resource_path("images"))
 
 debug()
 
