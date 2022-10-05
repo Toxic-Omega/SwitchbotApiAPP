@@ -24,4 +24,4 @@ Run the python version from the terminal and then install the missing libraries
 ```sh
 Download the lastest version and unzip it, run SwitchbotPcApp.exe or SwitchbotPcApp.pyw
 ```
-**⚠ WARNING: You will need to disable your antivirus when running SwitchbotPcApp.exe because it thinks curl.exe is a virus!!!**  
+**⚠ INFO: You will need to add the exe to the antivirus exeption list because it thinks curl.exe is a virus!**  
