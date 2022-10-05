@@ -17,6 +17,7 @@
 ## Requirements
 ```sh
 Python 3.10.0 or higher
+Windows only
 Run the python version from the terminal and then install the missing libraries
 ```
 ## Install
