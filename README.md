@@ -7,7 +7,7 @@
 |-------------------------|-------------------------------------------------------------------------|
 |`Any light`              | `on/off , brightness_up/brightness_down , change colors`                |
 |`Color Bulb`             | `on/off , brightness_scale , change colors`                             |
-|`Tv`                     | `toggle , volume up/down`                                               |
+|`Tv`                     | `toggle , volume up/down, mute`                                         |
 |`Bot`                    | `toggle`                                                                |
 ### Upcomming Features
 | Device name             | Features                                                                      | Priority  |
